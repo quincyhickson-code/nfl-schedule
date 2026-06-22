@@ -29,6 +29,57 @@ body { background: var(--bg); color: var(--bright); font-family: 'Barlow Condens
 .header-title { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .app-brand { display: flex; align-items: center; gap: 10px; }
 .app-logo { width: 80px; height: 80px; object-fit: cover; border-radius: 14px; mix-blend-mode: luminosity; flex-shrink: 0; }
+
+/* ─── Hub Overlay ──────────────────────────────────────────────── */
+.hub-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0);
+  z-index: 500;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  transition: background 0.4s;
+}
+.hub-overlay.open { background: rgba(4,6,14,0.93); pointer-events: auto; }
+.hub-ring { position: relative; width: 0; height: 0; }
+.hub-item {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; text-decoration: none; color: #fff;
+}
+.hub-center {
+  transform: translate(-50%,-50%) translate(-44vw,-44vh) scale(0.14);
+  opacity: 0; cursor: default;
+  transition: transform 0.6s cubic-bezier(0.22,1.25,0.36,1), opacity 0.2s;
+}
+.hub-overlay.open .hub-center { transform: translate(-50%,-50%); opacity: 1; }
+.hub-center .hub-logo-wrap { width: 130px; height: 130px; border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+.hub-center .hub-logo { width: 130px; height: 130px; object-fit: cover; mix-blend-mode: screen; filter: saturate(0) brightness(2); display: block; }
+.hub-label { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; }
+.hub-center .hub-label { color: rgba(255,255,255,0.5); opacity: 0; transform: translateY(6px); transition: opacity 0.3s 0.52s, transform 0.3s 0.52s; }
+.hub-overlay.open .hub-center .hub-label { opacity: 1; transform: none; }
+.hub-spoke { opacity: 0; transition: opacity 0.3s, transform 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+.hub-spoke .hub-logo-wrap { width: 90px; height: 90px; border-radius: 18px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.4); transition: transform 0.2s, box-shadow 0.2s; }
+.hub-spoke:hover .hub-logo-wrap, .hub-spoke:focus .hub-logo-wrap { transform: scale(1.1); box-shadow: 0 10px 36px rgba(255,255,255,0.1); }
+.hub-spoke .hub-logo { width: 90px; height: 90px; object-fit: cover; mix-blend-mode: screen; filter: saturate(0) brightness(2); display: block; }
+.hub-spoke .hub-label { color: rgba(255,255,255,0.7); opacity: 0; transform: translateY(5px); transition: opacity 0.2s, transform 0.2s; }
+.hub-spoke:hover .hub-label, .hub-spoke:focus .hub-label { opacity: 1; transform: none; }
+.hub-spoke:nth-child(2) { transform: translate(-50%,-50%) scale(0); transition-delay: 0s; }
+.hub-spoke:nth-child(3) { transform: translate(-50%,-50%) scale(0); transition-delay: 0s; }
+.hub-overlay.open .hub-spoke { opacity: 1; }
+.hub-overlay.open .hub-spoke:nth-child(2) { transform: translate(calc(-50% - 200px),-50%); transition-delay: 0.45s; }
+.hub-overlay.open .hub-spoke:nth-child(3) { transform: translate(calc(-50% + 200px),-50%); transition-delay: 0.55s; }
+.hub-close-hint { position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%); font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.5px; opacity: 0; transition: opacity 0.3s 0.65s; white-space: nowrap; }
+.hub-overlay.open .hub-close-hint { opacity: 1; }
+@media (max-width: 640px) {
+  .hub-center .hub-logo-wrap, .hub-center .hub-logo { width: 96px; height: 96px; border-radius: 18px; }
+  .hub-spoke .hub-logo-wrap, .hub-spoke .hub-logo { width: 68px; height: 68px; border-radius: 14px; }
+  .hub-spoke:nth-child(2) { transform: translate(-50%,-50%) scale(0); }
+  .hub-spoke:nth-child(3) { transform: translate(-50%,-50%) scale(0); }
+  .hub-overlay.open .hub-spoke:nth-child(2) { transform: translate(calc(-50% - 130px),-50%); }
+  .hub-overlay.open .hub-spoke:nth-child(3) { transform: translate(calc(-50% + 130px),-50%); }
+  .hub-spoke .hub-label { opacity: 1; transform: none; }
+}
+
 .brand-text h1 { font-size: 24px; font-weight: 700; letter-spacing: 0.5px; line-height: 1.1; color: var(--bright); }
 .subtitle { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 .header-meta { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }

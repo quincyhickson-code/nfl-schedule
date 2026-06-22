@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css?v=3" />
+  <link rel="stylesheet" href="/style.css?v=4" />
 </head>
 <body>
   <header class="header">
@@ -122,5 +122,42 @@
   </footer>
 
   <script src="/app.js?v=1"></script>
+
+  <div id="hub-overlay" class="hub-overlay">
+    <div class="hub-ring">
+      <div class="hub-item hub-center">
+        <div class="hub-logo-wrap"><img src="/logo.jpg" class="hub-logo" alt="" /></div>
+        <div class="hub-label">NFL</div>
+      </div>
+      <a href="https://match-schedule.onrender.com/" class="hub-item hub-spoke">
+        <div class="hub-logo-wrap"><img src="https://match-schedule.onrender.com/logo.jpg" class="hub-logo" alt="" /></div>
+        <div class="hub-label">Soccer</div>
+      </a>
+      <a href="https://nba-schedule-95zo.onrender.com/" class="hub-item hub-spoke">
+        <div class="hub-logo-wrap"><img src="https://nba-schedule-95zo.onrender.com/logo.jpg" class="hub-logo" alt="" /></div>
+        <div class="hub-label">Basketball</div>
+      </a>
+    </div>
+    <div class="hub-close-hint">tap outside &middot; esc to close</div>
+  </div>
+  <script>
+  (function(){
+    var overlay=document.getElementById('hub-overlay');
+    var logo=document.querySelector('.app-logo');
+    if(!overlay||!logo)return;
+    logo.style.cursor='pointer';
+    function open(){overlay.classList.add('open');logo.style.opacity='0';}
+    function close(){overlay.classList.remove('open');logo.style.opacity='';}
+    logo.addEventListener('click',function(e){e.stopPropagation();open();});
+    var pt;
+    logo.addEventListener('touchstart',function(){pt=setTimeout(open,500);},{passive:true});
+    logo.addEventListener('touchend',function(){clearTimeout(pt);});
+    logo.addEventListener('touchmove',function(){clearTimeout(pt);},{passive:true});
+    overlay.addEventListener('click',function(e){
+      if(e.target===overlay||e.target.classList.contains('hub-ring')||e.target.classList.contains('hub-close-hint'))close();
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  })();
+  </script>
 </body>
 </html>
