@@ -10,7 +10,7 @@
   --red:     #D50A0A;
   --t1:      #013369;
   --t2:      #D50A0A;
-  --header-h: 56px;
+  --header-h: 96px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,8 +28,8 @@ body { background: var(--bg); color: var(--bright); font-family: 'Barlow Condens
 }
 .header-title { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .app-brand { display: flex; align-items: center; gap: 10px; }
-.app-logo { width: 36px; height: 36px; object-fit: contain; border-radius: 6px; }
-.brand-text h1 { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; line-height: 1.1; color: var(--bright); }
+.app-logo { width: 80px; height: 80px; object-fit: cover; border-radius: 14px; mix-blend-mode: luminosity; flex-shrink: 0; }
+.brand-text h1 { font-size: 24px; font-weight: 700; letter-spacing: 0.5px; line-height: 1.1; color: var(--bright); }
 .subtitle { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 .header-meta { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .updated { font-size: 11px; color: var(--muted); white-space: nowrap; }
@@ -255,6 +255,10 @@ body { background: var(--bg); color: var(--bright); font-family: 'Barlow Condens
   .filters-btn { display: block; }
   #controls-secondary { display: none; }
   #controls-secondary.open { display: flex; flex-direction: column; gap: 8px; }
+
+  .header { height: 72px; }
+  .app-logo { width: 52px; height: 52px; border-radius: 10px; }
+  .brand-text h1 { font-size: 16px; }
 
   .view-slider { width: 100%; justify-content: stretch; }
   .view-opt { flex: 1; text-align: center; }
