@@ -259,8 +259,15 @@ body { background: var(--bg); color: var(--bright); font-family: 'Barlow Condens
   .view-slider { width: 100%; justify-content: stretch; }
   .view-opt { flex: 1; text-align: center; }
 
-  .game-card { grid-template-columns: 56px 1fr auto; gap: 6px; padding: 10px; }
+  .game-card { grid-template-columns: 64px 1fr auto; gap: 6px; padding: 10px; }
+  .game-time-label { white-space: nowrap; font-size: 12px; }
   .team-name { font-size: 13px; }
+  .team-record { display: none; }
+  .venue-tag { display: none; }
+  .roster-pill { display: none; }
+  .broadcast-tag { max-width: 80px; overflow: hidden; text-overflow: ellipsis; }
+  .updated { display: none; }
+  .subtitle { display: none; }
 
   .teams-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
   .team-card-crest { width: 32px; height: 32px; }
