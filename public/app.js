@@ -25,7 +25,7 @@ const NFL_TEAMS = [
   { abbrev:'DAL', name:'Dallas Cowboys',           conf:'NFC', div:'East', c1:'#003594', c2:'#041E42', espnId:6  },
   { abbrev:'NYG', name:'New York Giants',          conf:'NFC', div:'East', c1:'#0B2265', c2:'#A71930', espnId:19 },
   { abbrev:'PHI', name:'Philadelphia Eagles',      conf:'NFC', div:'East', c1:'#004C54', c2:'#A5ACAD', espnId:21 },
-  { abbrev:'WAS', name:'Washington Commanders',    conf:'NFC', div:'East', c1:'#5A1414', c2:'#FFB612', espnId:28 },
+  { abbrev:'WSH', name:'Washington Commanders',    conf:'NFC', div:'East', c1:'#5A1414', c2:'#FFB612', espnId:28 },
   // NFC North
   { abbrev:'CHI', name:'Chicago Bears',            conf:'NFC', div:'North', c1:'#0B162A', c2:'#C83803', espnId:3  },
   { abbrev:'DET', name:'Detroit Lions',            conf:'NFC', div:'North', c1:'#0076B6', c2:'#B0B7BC', espnId:8  },
